@@ -1,23 +1,22 @@
-# {{ cookiecutter.project_description }}
+# {{ cookiecutter.project_name }}
 
-[![Zenodo badge](https://zenodo.org/badge/doi/___doi1___.svg)](https://doi.org/___doi1___)
+[![Zenodo badge](https://zenodo.org/badge/doi/{{ cookiecutter.zenodo_doi }}.svg)](https://doi.org/{{ cookiecutter.zenodo_doi }})
 [![PEP compatible](http://pepkit.github.io/img/PEP-compatible-green.svg)](http://pep.databio.org/)
 
-[![medRxiv badge](https://zenodo.org/badge/doi/__doi1___.svg)](https://doi.org/__doi1___) ⬅️ read the preprint here
+[![bioRxiv badge](https://zenodo.org/badge/doi/{{ cookiecutter.biorxiv_doi }}.svg)](https://doi.org/{{ cookiecutter.biorxiv_doi }}) ⬅️ read the preprint here
 
-Project description
+{{ cookiecutter.project_description }}
 
 ## Organization
 
-- The [metadata](metadata) directory contains metadata relevant to annotate the samples
-- [This CSV file](metadata/samples.csv) is the master record of all analyzed samples
-- The [src](src) directory contains source code used to analyze the data
-- Raw data (i.e. MCD files) will be under the `data` directory.
-- Processing of the data will create TIFF files under the `processed`  directory.
-- Outputs from the analysis will be present in a `results` directory, with subfolders pertaining to each part of the analysis as described below.
-
-Raw data in the form of {{ cookiecutter.raw_data_format }} are hosted on WCM's enterprise version of Box.com. An account is needed to download the files, which can be made programmatically with the [imctransfer](https://github.com/ElementoLab/imctransfer) program.
-For now you'll need a developer token to connect to box.com programmatically. Place the credentials in a JSON file in `~/.imctransfer.auth.json`. Be sure to make the file read-only (e.g. `chmod 400 ~/.imctransfer.auth.json`).
+- The [metadata](metadata) directory contains metadata relevant to annotate the samples.
+- [The samples.csv file](metadata/samples.csv) is the master record of all analyzed samples.
+- The [src](src) directory contains source code used to analyze the data.
+- Raw data  is under the `data` directory (likely empty in a remote repository on GitHub).
+- Processing of the data creates files under the `processed`  directory.
+- Outputs from the analysis are present in the `results` directory, with subfolders pertaining to each part of the analysis as described below.
+- Assembled figures from plots are under the `figures` directory.
+- Manuscript files are under the `manuscript` directory.
 
 ## Reproducibility
 
@@ -34,11 +33,11 @@ Makefile for the {{ cookiecutter.project_slug }} project/package.
 Available commands:
 help                Display help and quit
 requirements        Install Python requirements
-transfer            [dev] Transfer data from wcm.box.com to local environment
 process             [dev] Process raw data into processed data types
-sync                [dev] Sync data/code to SCU server
+sync                [dev] Sync data/code to CeMM's cluster
 upload_data         [dev] Upload processed files to Zenodo
 download_data       Download processed data from Zenodo (for reproducibility)
+interactive         [dev] Run an interactive session for analysis
 analysis            Run the actual analysis
 ```
 
@@ -47,25 +46,23 @@ To reproduce analysis using the pre-preocessed data, one would so:
 ```bash
 $ make help
 $ make requirements   # install python requirements using pip
-$ make download_data  # download processed from Zenodo
+$ make download_data  # download data from Zenodo
 $ make analysis       # run the analysis scripts
 ```
 
 #### Requirements
 
-- Python 3.7+ (was run on 3.8.2)
+- Python 3.10+
 - Python packages as specified in the [requirements file](requirements.txt) - install with `make requirements` or `pip install -r requirements.txt`.
-
-Feel free to use some virtualization or compartimentalization software such as virtual environments or conda to install the requirements.
 
 #### Virtual environment
 
-It is recommended to compartimentalize the analysis software from the system's using virtual environments, for example.
+It is recommended to use some virtualization or compartimentalization software such as virtual environments or conda to install the requirements.
 
-Here's how to create one with the repository and installed requirements:
+Here's how to create a virtualenvironment with the repository and installed requirements:
 
 ```bash
-git clone git@github.com:___gituser/repo___.git
+git clone git@github.com:rendeirolab/{{ cookiecutter.project_slug }}.git
 cd {{ cookiecutter.project_slug }}
 virtualenv .venv
 source .venv/bin/activate

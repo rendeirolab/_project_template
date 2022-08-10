@@ -1,6 +1,4 @@
-"""
-Utility functions used throughout the project.
-"""
+"""Utility functions used throughout the project."""
 
 import matplotlib
 

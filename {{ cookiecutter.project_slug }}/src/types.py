@@ -1,6 +1,4 @@
-"""
-Specific types or type aliases used in the project.
-"""
+"""Specific types or type aliases used in the project."""
 
 from __future__ import annotations
 import os

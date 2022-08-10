@@ -1,5 +1,10 @@
 {
-    "project_slug": "test-proj",
-    "project_description": "Test project",
-    "raw_data_format": "MCD"
+    "project_slug": null,
+    "project_name": null,
+    "project_description": "Extended project description",
+    "zenodo_doi": "__doi:zenodo__",
+    "biorxiv_doi": "__doi:biorxiv__",
+    "full_name": null,
+    "username": null,
+    "email": null
 }

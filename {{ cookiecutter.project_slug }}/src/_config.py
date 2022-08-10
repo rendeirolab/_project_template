@@ -1,13 +1,8 @@
 #!/usr/bin/env python
 
-"""
-A module to provide the boilerplate needed for all the analysis.
-"""
+"""A module to provide the boilerplate needed for all the analysis."""
 
-import json
-import re
-from functools import partial
-from typing import List, Dict, Final
+import typing as tp
 
 import numpy as np  # type: ignore[import]
 import pandas as pd  # type: ignore[import]
@@ -15,110 +10,48 @@ import matplotlib  # type: ignore[import]
 import matplotlib.pyplot as plt  # type: ignore[import]
 import seaborn as sns  # type: ignore[import]
 
-from imc import Project  # type: ignore[import]
-from src.types import Path, DataFrame  # type: ignore[import]
+from src.types import Path, Array, DataFrame  # type: ignore[import]
 
 
 class Config:
-    # constants
-    channels_exclude_strings: Final[List[str]] = [
-        "<EMPTY>",
-        "190BCKG",
-        "80ArAr",
-        "129Xe",
-    ]
-    roi_exclude_strings: Final[List[str]] = []
+    """A class to hold constants used throughout the project. To be filled in at the start of each project."""
 
-    ## Major attributes to contrast when comparing observation groups
-    attributes: Final[List[str]] = []
-
-    roi_attributes: DataFrame
-    sample_attributes: DataFrame
-
-    figkws: Final[Dict] = dict(
+    # simple constants
+    figkws: tp.Final[dict] = dict(
         dpi=300, bbox_inches="tight", pad_inches=0, transparent=False
     )
 
     # directories
-    metadata_dir: Final[Path] = Path("metadata")
-    data_dir: Final[Path] = Path("data")
-    processed_dir: Final[Path] = Path("processed")
-    results_dir: Final[Path] = Path("results")
+    metadata_dir: tp.Final[Path] = Path("metadata")
+    data_dir: tp.Final[Path] = Path("data")
+    processed_dir: tp.Final[Path] = Path("processed")
+    results_dir: tp.Final[Path] = Path("results")
 
-    # # Order
-    cat_order: Final[Dict[str, List]] = dict(
+    # major attributes to contrast when comparing sample groups
+    attributes: tp.Final[list[str]] = []
+    sample_attributes: DataFrame
+
+    # definition of categorical or numeric
+    categorical_attributes: list[str] = []
+    numerical_attributes: list[str] = []
+
+    # order of categorical attributes
+    categorical_order: tp.Final[dict[str, list]] = dict(
         cat1=["val1", "val2"],
         cat2=["val1", "val2"],
     )
 
-    # Color codes
-    colors: Final[Dict[str, np.ndarray]] = dict(
+    # consistent color codes for categorical variables to be used throughout the project
+    colors: tp.Final[dict[str, Array]] = dict(
         cat1=np.asarray(sns.color_palette())[[2, 0, 1, 3]],
         cat2=np.asarray(sns.color_palette())[[2, 0, 1, 5, 4, 3]],
     )
+    # consistent colormaps for numeric variables to be used throughout the project
+    cmaps: tp.Final[dict[str, str]] = dict(cont1="viridis")
 
-    # Output files
-    metadata_file: Final[Path] = metadata_dir / "clinical_annotation.pq"
-    quantification_file: Final[Path] = results_dir / "cell_type" / "quantification.pq"
-    gating_file: Final[Path] = results_dir / "cell_type" / "gating.pq"
-    h5ad_file: Final[Path] = (
-        results_dir / "cell_type" / "anndata.all_cells.processed.h5ad"
-    )
-    counts_file: Final[Path] = results_dir / "cell_type" / "cell_type_counts.pq"
-    roi_areas_file: Final[Path] = results_dir / "roi_areas.csv"
-    sample_areas_file: Final[Path] = results_dir / "sample_areas.csv"
+    # input file paths
+    metadata_file: tp.Final[Path] = metadata_dir / "samples.csv"
+    clinical_file: tp.Final[Path] = metadata_dir / "clinical_annotation.csv"
 
-
-# Initialize project
-prj = Project(Config.metadata_dir / "samples.csv")
-
-# Filter channels and ROIs
-channels = prj.channel_labels.stack().drop_duplicates().reset_index(level=1, drop=True)
-channels_exclude = channels.loc[
-    channels.str.contains(r"^\d")
-    | channels.str.contains("|".join(Config.channels_exclude_strings))
-].tolist() + ["<EMPTY>(Sm152-In115)"]
-channels_include = channels[~channels.isin(channels_exclude)]
-
-for roi in prj.rois:
-    roi.set_channel_exclude(channels_exclude)
-
-for s in prj:
-    s.rois = [r for r in s if r.name not in Config.roi_exclude_strings]
-
-
-# # ROIs
-roi_names = [x.name for x in prj.rois]
-Config.roi_attributes = (
-    pd.DataFrame(
-        np.asarray(
-            [getattr(r.sample, attr) for r in prj.rois for attr in Config.attributes]
-        ).reshape((-1, len(Config.attributes))),
-        index=roi_names,
-        columns=Config.attributes,
-    )
-    .rename_axis(index="roi")
-    .rename(columns={"name": "sample"})
-)
-
-
-# # Samples
-sample_names = [x.name for x in prj.samples]
-Config.sample_attributes = (
-    pd.DataFrame(
-        np.asarray(
-            [getattr(s, attr) for s in prj.samples for attr in Config.attributes]
-        ).reshape((-1, len(Config.attributes))),
-        index=sample_names,
-        columns=Config.attributes,
-    )
-    .rename_axis(index="sample")
-    .drop(["name"], axis=1, errors="ignore")
-)
-
-for df in [Config.roi_attributes, Config.sample_attributes]:
-    for cat, order in Config.cat_order.items():
-        df[cat] = pd.Categorical(df[cat], categories=order, ordered=True)
-
-    # Change dtype of integers (if needed)
-    df["var1"] = df["var1"].astype(int)
+    # output file paths
+    ...

@@ -1,4 +1,4 @@
-# {{ cookiecutter.project_description }}
+# {{ cookiecutter.project_name }}
 
 ## Scientific questions
 

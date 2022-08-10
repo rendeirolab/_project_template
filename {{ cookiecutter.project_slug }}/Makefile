@@ -20,9 +20,6 @@ help:  ## Display help and quit
 requirements:  ## Install Python requirements
 	pip install -r requirements.txt
 
-transfer:  ## [dev] Transfer data from wcm.box.com to local environment (to run internally at WCM)
-	imctransfer -q 2021  # Query for files produced in 2021 only
-
 process:  ## [dev] Run first step of conversion of MCD to various files (should be done only when processing files from MCD files)
 	@echo "Running prepare step for samples: $(SAMPLES)"
 	for SAMPLE in $(SAMPLES); do \
@@ -37,7 +34,7 @@ backup_time:
 
 _sync:
 	rsync --copy-links --progress -r \
-	. afr4001@pascal.med.cornell.edu:projects/$(NAME)
+	. {{ cookiecutter.username }}@login:projects/$(NAME)
 
 sync: _sync backup_time ## [dev] Sync data/code to SCU server
 
@@ -51,13 +48,19 @@ download_data: ## [TODO!] Download processed data from Zenodo (for reproducibili
 	@echo "Not yet implemented!"
 	python -u src/_download_datasets.py
 
-analysis:  ## Run the actual analysis
+interactive: ## [dev] Start an interactive IPython session
+	@echo "Starting an interaction IPython session"
+	python -m IPython -i src/analysis.py
+
+analysis:  ## Run all analysis steps
 	@echo "Running analysis!"
 
 	# Analysis of first submission
 	# # Global look at the clinical data
 	python -u src/clinical.py
+
 	# # Main analysis steps
+	python -u src/analysis.py
 	python -u src/analysis1.py
 	python -u src/analysis2.py
 
