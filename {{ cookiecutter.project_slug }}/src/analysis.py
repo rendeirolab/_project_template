@@ -3,7 +3,7 @@
 """Analysis description."""
 
 
-from src._config import prj, Config as config
+from src._config import Config as config
 
 
 def main() -> None:
