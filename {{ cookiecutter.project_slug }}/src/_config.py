@@ -16,6 +16,8 @@ from src.types import Path, Array, DataFrame  # type: ignore[import]
 class Config:
     """A class to hold constants used throughout the project. To be filled in at the start of each project."""
 
+    project_name = Path().absolute().name
+
     # simple constants
     figkws: tp.Final[dict] = dict(
         dpi=300, bbox_inches="tight", pad_inches=0, transparent=False
