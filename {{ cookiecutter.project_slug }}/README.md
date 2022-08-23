@@ -7,6 +7,8 @@
 
 {{ cookiecutter.project_description }}
 
+This repository was created with a [cookiecutter template](https://github.com/rendeirolab/_project_template), version {{ cookiecutter.template_version }}.
+
 ## Organization
 
 - The [metadata](metadata) directory contains metadata relevant to annotate the samples.

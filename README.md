@@ -21,6 +21,7 @@ Fields to be provided are:
 - `full_name`: The user's full name.
 - `username`:  The user's username (no whitespace).
 - `email`: The user's email.
+- [do not change] `template_version`: This will keep track of what template version was used to 
 
 ## Defaults
 To have default values filled in (e.g. username, email) create a `.cookiecutterrc` file or use a `COOKIECUTTER_CONFIG` environmental variable [as described here](https://cookiecutter.readthedocs.io/en/stable/advanced/user_config.html).
@@ -31,3 +32,10 @@ default_context:
     username: "aroy"
     email: "audreyr@cemm.oeaw.ac.at"
 ```
+
+## Editing
+To make modifications/improvements to the template open a [pull request on GitHub](https://github.com/rendeirolab/_project_template/pulls).
+
+When merging the PR, make sure to:
+1. Add the modifications to the [Changelog](Changelog.md)
+2. Increment the version number on [cookiecutter.json](cookiecutter.json).

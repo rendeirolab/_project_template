@@ -6,5 +6,6 @@
     "biorxiv_doi": "__doi:biorxiv__",
     "full_name": null,
     "username": null,
-    "email": null
+    "email": null,
+    "template_version": "0.1.0"
 }
