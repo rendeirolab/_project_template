@@ -15,7 +15,7 @@ You can also clone the repository and point to its path as sole argument.
 Fields to be provided are:
 - [required] `project_slug`: A consise and unique string for the project (no whitespace).
 - `project_description`: A human readable description of the project.
-- `project_description`: An extended human readable description of the project.
+- `editor`: Which text editor is being used - will generate a few auxiliary files for specific editors.
 - `zenodo_doi`: A DOI for data used/produced by the project.
 - `biorxiv_doi`:  A DOI for the project's preprint.
 - `full_name`: The user's full name.

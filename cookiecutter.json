@@ -1,6 +1,7 @@
 {
     "project_slug": null,
     "project_description": "Extended project description",
+    "editor": "sublime-text",
     "zenodo_doi": "__doi:zenodo__",
     "biorxiv_doi": "__doi:biorxiv__",
     "full_name": null,
