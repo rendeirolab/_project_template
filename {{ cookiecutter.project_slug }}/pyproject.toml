@@ -4,7 +4,7 @@ name = "{{ cookiecutter.project_slug }}"
 authors = [
     {name = "{{ cookiecutter.username }}", email = "{{ cookiecutter.email }}"},
 ]
-description = "{{ cookiecutter.project_name }}"
+description = "{{ cookiecutter.project_description }}"
 readme = "README.md"
 keywords = [
     "computational biology",
@@ -87,7 +87,7 @@ style = "semver"
 [tool.poetry]
 name = "{{ cookiecutter.project_slug }}"
 version = "0.0.0"  # waiting on next release of poetry to use dynamic-versioning extension
-description = "{{ cookiecutter.project_name }}"
+description = "{{ cookiecutter.project_description }}"
 authors = ["{{ cookiecutter.username }} <{{ cookiecutter.email }}>",]
 license = "GPL-3.0-or-later"
 

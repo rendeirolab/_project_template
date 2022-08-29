@@ -6,7 +6,6 @@ from pathlib import Path
 PROJECT_DIRECTORY = Path.cwd().absolute()
 GITHUB_ORG = "rendeirolab"
 PROJECT_SLUG = "{{ cookiecutter.project_slug }}"
-PROJECT_NAME = "{{ cookiecutter.project_name }}"
 
 
 def main() -> None:
@@ -18,7 +17,7 @@ def print_further_instuctions() -> None:
     cmds0 = "\n\t$ ".join(get_git_init_commands())
     cmds1 = "\n\t$ ".join(get_additional_commands())
     message = f"""
-    Your project '{PROJECT_NAME}' is created.
+    Your project '{PROJECT_SLUG}' is created.
 
     You should have registered your project on the lab's register:
     https://cemmat.sharepoint.com/:x:/r/sites/rendeirolab/_layouts/15/Doc.aspx?sourcedoc=%7B4c72f84b-f33b-4162-a5e8-f05556fdf66b%7D

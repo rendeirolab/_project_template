@@ -1,4 +1,4 @@
-# {{ cookiecutter.project_name }}
+# {{ cookiecutter.project_slug }}
 
 [![Zenodo badge](https://zenodo.org/badge/doi/{{ cookiecutter.zenodo_doi }}.svg)](https://doi.org/{{ cookiecutter.zenodo_doi }})
 [![PEP compatible](http://pepkit.github.io/img/PEP-compatible-green.svg)](http://pep.databio.org/)
