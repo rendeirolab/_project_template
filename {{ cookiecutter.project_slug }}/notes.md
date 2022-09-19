@@ -23,12 +23,12 @@ Description of molecules/cell types of interest:
 
 # Meeting notes
 
-## YYYYMMDD meeting
+## YYYY-MM-DD meeting
 
-## YYYYMMDD meeting
+## YYYY-MM-DD meeting
 
 # Analysis log and to-dos
 
-## YYYYMMDD analysis
+## YYYY-MM-DD analysis
 
-## YYYYMMDD analysis
+## YYYY-MM-DD analysis
