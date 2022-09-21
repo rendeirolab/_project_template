@@ -1,5 +1,7 @@
 """This module is called after project is created."""
 
+import time
+
 import textwrap
 from pathlib import Path
 
@@ -16,11 +18,27 @@ def print_further_instuctions() -> None:
     """Show user what to do next after project creation."""
     cmds0 = "\n\t$ ".join(get_git_init_commands())
     cmds1 = "\n\t$ ".join(get_additional_commands())
+    CURRENT_DATE = time.strftime("%Y-%m-%d")
+    CSV_ROW = ",".join(
+        [
+            "RLXXXX",
+            "{{ cookiecutter.project_slug }}",
+            "{{ cookiecutter.project_description }}",
+            "{{ cookiecutter.full_name }}",
+            CURRENT_DATE,
+            "https://github.com/rendeirolab/{{ cookiecutter.project_slug }}",
+            "/research/lab_rendeiro/projects/{{ cookiecutter.project_slug }}",
+            "/nobackup/lab_rendeiro/projects/{{ cookiecutter.project_slug }}",
+        ]
+    )
     message = f"""
     Your project '{PROJECT_SLUG}' is created.
 
     You should have registered your project on the lab's register:
     https://cemmat.sharepoint.com/:x:/r/sites/rendeirolab/_layouts/15/Doc.aspx?sourcedoc=%7B4c72f84b-f33b-4162-a5e8-f05556fdf66b%7D
+
+    Add a row like this:
+        "{CSV_ROW}"
 
     You can now start working on it, but there are a few additional things to do:
 
