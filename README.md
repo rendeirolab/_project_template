@@ -33,6 +33,19 @@ default_context:
     email: "audreyr@cemm.oeaw.ac.at"
 ```
 
+## Authenticating with git/Github
+To use SSH to authenticate with Github (recommended):
+1. Generate a ssh-key with the command: `ssh-keygen`
+2. [Add the generated **public** key to your Github profile settings](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+3. Make cookiecutter use SSH by default by adding to your `~/.cookiecutterrc` file:
+```yaml
+abbreviations:
+    gh: git@github.com:{0}.git
+```
+Alternatively, you can continue to use HTTPS (default) but if you have two factor authentication activated in your Github profile (highly recommended), you will have to:
+1. [Create a Github application token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+2. Provide that as your Github password when interacting with Github using git/cookiecutter.
+
 ## Editing
 To make modifications/improvements to the template open a [pull request on GitHub](https://github.com/rendeirolab/_project_template/pulls).
 
