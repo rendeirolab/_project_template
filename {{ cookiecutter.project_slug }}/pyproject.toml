@@ -161,6 +161,10 @@ module = [
     'skimage.*',
     'matplotlib.*',
     'networkx.*',
+    'pingouin.*',
+    'tqdm.*',
+    'anndata.*',
+    'scanpy.*',
     #
     '{{ cookiecutter.project_slug }}.*'
 ]
