@@ -45,11 +45,11 @@ def print_further_instuctions() -> None:
     1) Start a github repository in the new directory structure:
         $ cd {PROJECT_SLUG} && git init
     2) Go to https://github.com/new and create a project with the same slug name: '{PROJECT_SLUG}'
-    3) Upload initial code to GitHub:
+    3) Upload initial code to GitHub (using ssh, requires setup):
         $ git add .
         $ git commit -m "Initial commit"
         $ git branch -M main
-        $ git remote add origin https://github.com/{GITHUB_ORG}/{PROJECT_SLUG}.git
+        $ git remote add origin git@github.com:{GITHUB_ORG}/{PROJECT_SLUG}.git
         $ git push -u origin main
     4. Create a directory for the project in the CeMM cluster:
         $ mkdir -p /research/groups/lab_rendeiro/projects/{PROJECT_SLUG}/data
@@ -78,7 +78,7 @@ def get_git_init_commands():
         "git add .",
         'git commit -m "Initial commit"',
         "git branch -M main",
-        f"git remote add origin https://github.com/{GITHUB_ORG}/{PROJECT_SLUG}.git",
+        f"git remote add origin git@github.com:{GITHUB_ORG}/{PROJECT_SLUG}.git",
         "git push -u origin main",
     ]
     return cmds
