@@ -52,14 +52,14 @@ def print_further_instuctions() -> None:
         $ git remote add origin git@github.com:{GITHUB_ORG}/{PROJECT_SLUG}.git
         $ git push -u origin main
     4. Create a directory for the project in the CeMM cluster:
-        $ mkdir -p /research/groups/lab_rendeiro/projects/{PROJECT_SLUG}/data
+        $ mkdir -p /research/lab_rendeiro/projects/{PROJECT_SLUG}/data
     5. Create a directory for the project in the CeMM cluster at:
-        $ mkdir -p /nobackup/groups/lab_rendeiro/projects/{PROJECT_SLUG}/
+        $ mkdir -p /nobackup/lab_rendeiro/projects/{PROJECT_SLUG}/
     6. Create a soft link between '/research/.../data' and '/nobackup/.../data':
-        $ cd /nobackup/groups/lab_rendeiro/projects/{PROJECT_SLUG}/
-        $ ln -s /research/groups/lab_rendeiro/projects/{PROJECT_SLUG}/data ./
-    6. Create a 'cemm_metadata.json' file in '/research/groups/lab_rendeiro/projects/{PROJECT_SLUG}/'
-    7. Create a 'cemm_metadata.json' file in '/nobackup/groups/lab_rendeiro/projects/{PROJECT_SLUG}/'
+        $ cd /nobackup/lab_rendeiro/projects/{PROJECT_SLUG}/
+        $ ln -s /research/lab_rendeiro/projects/{PROJECT_SLUG}/data ./
+    6. Create a 'cemm_metadata.json' file in '/research/lab_rendeiro/projects/{PROJECT_SLUG}/'
+    7. Create a 'cemm_metadata.json' file in '/nobackup/lab_rendeiro/projects/{PROJECT_SLUG}/'
 
     Summary of next steps:
         $ {cmds0}
@@ -71,7 +71,6 @@ def print_further_instuctions() -> None:
 
 
 def get_git_init_commands():
-
     cmds = [
         f"cd {PROJECT_SLUG}",
         "git init",
@@ -85,13 +84,12 @@ def get_git_init_commands():
 
 
 def get_additional_commands():
-
     cmds = [
         "ssh {{ cookiecutter.username }}@login",
-        f"mkdir -p /research/groups/lab_rendeiro/projects/{PROJECT_SLUG}/data",
-        f"mkdir -p /nobackup/groups/lab_rendeiro/projects/{PROJECT_SLUG}/",
-        f"cd /nobackup/groups/lab_rendeiro/projects/{PROJECT_SLUG}/",
-        f"ln -s /research/groups/lab_rendeiro/projects/{PROJECT_SLUG}/data ./",
+        f"mkdir -p /research/lab_rendeiro/projects/{PROJECT_SLUG}/data",
+        f"mkdir -p /nobackup/lab_rendeiro/projects/{PROJECT_SLUG}/",
+        f"cd /nobackup/lab_rendeiro/projects/{PROJECT_SLUG}/",
+        f"ln -s /research/lab_rendeiro/projects/{PROJECT_SLUG}/data ./",
     ]
     return cmds
 
