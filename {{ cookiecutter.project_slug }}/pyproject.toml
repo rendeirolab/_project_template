@@ -12,8 +12,9 @@ keywords = [
 ]
 classifiers = [
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Development Status :: 3 - Alpha",
     "Typing :: Typed",
     "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
@@ -35,7 +36,6 @@ dependencies = [
     "scikit-learn>=1.0.2",
     "scikit-image>=1.18",
     "networkx>=2.4",
-    "imc>=0.1.4",
     "seaborn-extensions>=0.20.0",
 ]
 dynamic = ['version']
@@ -105,7 +105,6 @@ pingouin = "^0.5.2"
 scikit-learn = "^1.0.2"
 scikit-image = "^1.18"
 networkx = "^2.4"
-imc = "^0.1.4"
 seaborn-extensions = "^0.20.0"
 
 [tool.poetry.dev-dependencies]

@@ -56,16 +56,16 @@ analysis:  ## Run all analysis steps
 	@echo "Running analysis!"
 
 	# Analysis of first submission
-	# # Global look at the clinical data
-	python -u src/clinical.py
+	# # Global look at the clinical metadata
+	# python -u src/clinical.py
 
 	# # Main analysis steps
 	python -u src/analysis.py
-	python -u src/analysis1.py
-	python -u src/analysis2.py
+	# python -u src/analysis1.py
+	# python -u src/analysis2.py
 
 	# Revision work:
-	python -u src/further_analysis.py
+	# python -u src/further_analysis.py
 
 figures:  ## Produce figures in various formats
 	cd figures; bash process.sh

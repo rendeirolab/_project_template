@@ -16,8 +16,8 @@ def main() -> None:
 
 def print_further_instuctions() -> None:
     """Show user what to do next after project creation."""
-    cmds0 = "\n\t$ ".join(get_git_init_commands())
-    cmds1 = "\n\t$ ".join(get_additional_commands())
+    cmds0 = "\n\t".join(get_git_init_commands())
+    cmds1 = "\n\t".join(get_additional_commands())
     CURRENT_DATE = time.strftime("%Y-%m-%d")
     CSV_ROW = ",".join(
         [
@@ -45,6 +45,8 @@ def print_further_instuctions() -> None:
     1) Start a github repository in the new directory structure:
         $ cd {PROJECT_SLUG} && git init
     2) Go to https://github.com/new and create a project with the same slug name: '{PROJECT_SLUG}'
+        or create if from the command line:
+        $ gh repo create --private rendeirolab/{PROJECT_SLUG}
     3) Upload initial code to GitHub (using ssh, requires setup):
         $ git add .
         $ git commit -m "Initial commit"
@@ -62,8 +64,10 @@ def print_further_instuctions() -> None:
     7. Create a 'cemm_metadata.json' file in '/nobackup/lab_rendeiro/projects/{PROJECT_SLUG}/'
 
     Summary of next steps:
-        $ {cmds0}
-        $ {cmds1}
+        ```
+        {cmds0}
+        {cmds1}
+        ```
 
     Don't forget also to describe the project in 'cemm_metadata.json' files as well.
     """
@@ -73,7 +77,7 @@ def print_further_instuctions() -> None:
 def get_git_init_commands():
     cmds = [
         f"cd {PROJECT_SLUG}",
-        "git init",
+        f"gh repo create --private rendeirolab/{PROJECT_SLUG}" "git init",
         "git add .",
         'git commit -m "Initial commit"',
         "git branch -M main",

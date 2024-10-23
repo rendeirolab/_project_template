@@ -18,6 +18,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
   - 
 
+
+## [0.3.0] 2024-10-23
+
+### Added
+  - `src.ops` - reusable operations across datasets.
+  - Add instructions to create remote repository from command line
+
+### Changed
+  - Moved global config to `src/__init__.py`.
+  - Better formatting of cookiecutter post-hook message
+
+### Removed
+  - Removed `src/types.py` and associated custom types.
+  - Removed `src/_config.py`.
+  - Removed `imc` requirement.
+
 ## [0.2.0] 2023-12-15
 
 ### Added

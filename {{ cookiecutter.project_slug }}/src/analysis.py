@@ -3,21 +3,21 @@
 """Analysis description."""
 
 
-from src._config import Config as config
+from src import config
 
 
-def main() -> None:
+def main() -> int:
 
     step1()
     step2()
 
-
-def step1() -> None:
-    ...
+    return 0
 
 
-def step2() -> None:
-    ...
+def step1() -> None: ...
+
+
+def step2() -> None: ...
 
 
 if __name__ == "__main__" and "get_ipython" not in locals():
