@@ -18,6 +18,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
   - 
 
+
+## [0.3.0] 2024-10-23
+
+### Added
+  - `src.ops` - reusable operations across datasets.
+
+### Changed
+  - Moved global config to `src/__init__.py`.
+
+### Removed
+  - Removed `src/types.py` and associated custom types.
+  - Removed `src/_config.py`.
+  - Removed `imc` requirement.
+
 ## [0.2.0] 2023-12-15
 
 ### Added
