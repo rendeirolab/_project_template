@@ -1,9 +1,7 @@
 """Utility functions used throughout the project."""
 
 import matplotlib
-
-from src.types import Figure
-
+from matplotlib.figure import Figure
 
 def rasterize_scanpy(fig: Figure) -> None:
     """

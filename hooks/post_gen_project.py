@@ -11,6 +11,7 @@ PROJECT_SLUG = "{{ cookiecutter.project_slug }}"
 
 
 def main() -> None:
+    init_git_repo()
     print_further_instuctions()
 
 
@@ -77,11 +78,12 @@ def print_further_instuctions() -> None:
 def get_git_init_commands():
     cmds = [
         f"cd {PROJECT_SLUG}",
-        f"gh repo create --private rendeirolab/{PROJECT_SLUG}" "git init",
+        "git init",
         "git add .",
         'git commit -m "Initial commit"',
         "git branch -M main",
         f"git remote add origin git@github.com:{GITHUB_ORG}/{PROJECT_SLUG}.git",
+        f"gh repo create --private rendeirolab/{PROJECT_SLUG}",
         "git push -u origin main",
     ]
     return cmds
@@ -104,11 +106,15 @@ def init_git_repo() -> None:
 
     Unfortunately it doesn't work as it would require the template instance to already exist but that will only happen after this script finishes.
     """
-    import os
+    import subprocess
 
-    cmd = " && ".join(get_git_init_commands())
-    assert Path(PROJECT_SLUG).exists(), "Directory was not created yet!"
-    os.system(cmd)
+    cmds = get_git_init_commands()[1:]
+    {% if not cookiecutter.create_github_repo -%} 
+    cmds = cmds[:-2]
+    {% endif %}
+
+    for cmd in cmds:
+        subprocess.run(cmd, shell=True)
 
 
 if __name__ == "__main__":

@@ -19,6 +19,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - 
 
 
+
+## [0.4.0] 2024-12-31
+
+### Added
+  - Cookiecutter option to choose `project_type` from "research" or "software".
+  - Automatic git repo creation with initial commit including optional remote repo creation.
+
+### Changed
+  - Updated `pyproject.toml` to full compliance.
+  - Made project immediately 'buildable' from start with `uv build` command.
+  - Project build version file location now dependent on `project_type` (via setuptools_scm).
+  - Fix scikit-image dependency version.
+  - Fix seaborn_extensions dependency version.
+  - Fix git init command instructions.
+
+### Removed
+  - Removed `poetry` build system.
+
+
 ## [0.3.0] 2024-10-23
 
 ### Added
@@ -33,6 +52,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Removed `src/types.py` and associated custom types.
   - Removed `src/_config.py`.
   - Removed `imc` requirement.
+
 
 ## [0.2.0] 2023-12-15
 

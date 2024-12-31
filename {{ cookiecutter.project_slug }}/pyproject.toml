@@ -1,4 +1,3 @@
-# PIP, using PEP621
 [project]
 name = "{{ cookiecutter.project_slug }}"
 authors = [
@@ -20,9 +19,8 @@ classifiers = [
     "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
     "Topic :: Scientific/Engineering :: Bio-Informatics",
 ]
-#license = "gpt3"
+license = {text = "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)"}
 requires-python = ">=3.10"
-# not yet supported by pip!
 dependencies = [
     "tqdm>=4.64.0",
     "parmap>=1.5.3",
@@ -34,14 +32,13 @@ dependencies = [
     "scipy>=1.6",
     "pingouin>=0.5.2",
     "scikit-learn>=1.0.2",
-    "scikit-image>=1.18",
+    "scikit-image>=0.25.0",
     "networkx>=2.4",
-    "seaborn-extensions>=0.20.0",
+    "seaborn-extensions>=0.2.0",
 ]
 dynamic = ['version']
 
 [project.optional-dependencies]
-# not yet supported by pip!
 dev = [
     "ipython",
     "black[d]",
@@ -69,58 +66,15 @@ documentation = "https://github.com/rendeirolab/{{ cookiecutter.project_slug }}/
 repository = "https://github.com/rendeirolab/{{ cookiecutter.project_slug }}"
 
 [build-system]
-# requires = ["poetry>=0.12", "setuptools>=45", "wheel", "poetry-dynamic-versioning"]
-# build-backend = "poetry.masonry.api"
 requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.0"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools]
+license-files = []  # https://github.com/astral-sh/uv/issues/9513
+
 [tool.setuptools_scm]
-write_to = "{{ cookiecutter.project_slug }}/_version.py"
+write_to = {% if cookiecutter.project_type == "software" -%} "{{ cookiecutter.project_slug }}/_version.py" {%- elif cookiecutter.project_type == "research" -%} "_version.py" {%- endif %}
 write_to_template = 'version = __version__ = "{version}"'
-
-# Poetry
-[tool.poetry-dynamic-versioning]
-enable = true
-vcs = "git"
-style = "semver"
-
-[tool.poetry]
-name = "{{ cookiecutter.project_slug }}"
-version = "0.0.0"  # waiting on next release of poetry to use dynamic-versioning extension
-description = "{{ cookiecutter.project_description }}"
-authors = ["{{ cookiecutter.username }} <{{ cookiecutter.email }}>",]
-license = "GPL-3.0-or-later"
-
-[tool.poetry.dependencies]
-python = "^3.10"
-tqdm = "^4.64.0"
-parmap = "^1.5.3"
-numpy = "^1.22"
-pandas = "^1.4.3"
-anndata = "^0.8.0"
-matplotlib = "^3.5.2"
-seaborn = "^0.11.2"
-scipy = "^1.6"
-pingouin = "^0.5.2"
-scikit-learn = "^1.0.2"
-scikit-image = "^1.18"
-networkx = "^2.4"
-seaborn-extensions = "^0.20.0"
-
-[tool.poetry.dev-dependencies]
-ipython = "^7.16.1"
-pylint = "^2.5.3"
-git-lint = "^0.1.2"
-black = {extras = ["d"], version = "^19.10b0"}
-mypy = "^0.782"
-pytest = "^5.4.3"
-Sphinx = "^3.1.1"
-sphinx-issues = "^1.2.0"
-sphinx-rtd-theme = "^0.5.0"
-sphinx-autodoc-typehints = "^1.12.0"
-
-[tool.poetry.extras]
-
 
 [tool.black]
 line-length = 90
@@ -164,8 +118,7 @@ module = [
     'tqdm.*',
     'anndata.*',
     'scanpy.*',
-    #
-    '{{ cookiecutter.project_slug }}.*'
+    {% if cookiecutter.project_type == "software" -%} '{{ cookiecutter.project_slug }}.*' {%- endif %}
 ]
 ignore_missing_imports = true
 
@@ -177,6 +130,6 @@ testpaths = [
     "integration",
 ]
 markers = [
-    'slow', # 'marks tests as slow (deselect with "-m 'not slow'")',
-    'serial'
+    'slow',
+    'serial',
 ]

@@ -1,11 +1,11 @@
 {
     "project_slug": null,
     "project_description": "Extended project description",
+    "project_type": ["research", "software"],
     "editor": "sublime-text",
-    "zenodo_doi": "__doi:zenodo__",
-    "biorxiv_doi": "__doi:biorxiv__",
     "full_name": null,
     "username": null,
     "email": null,
-    "template_version": "0.3.0"
+    "template_version": "0.4.0",
+    "create_github_repo": false
 }

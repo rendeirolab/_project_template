@@ -1,9 +1,8 @@
 # {{ cookiecutter.project_slug }}
 
-[![Zenodo badge](https://zenodo.org/badge/doi/{{ cookiecutter.zenodo_doi }}.svg)](https://doi.org/{{ cookiecutter.zenodo_doi }})
-[![PEP compatible](http://pepkit.github.io/img/PEP-compatible-green.svg)](http://pep.databio.org/)
-
-[![bioRxiv badge](https://zenodo.org/badge/doi/{{ cookiecutter.biorxiv_doi }}.svg)](https://doi.org/{{ cookiecutter.biorxiv_doi }}) ⬅️ read the preprint here
+<!-- [![Zenodo badge](https://zenodo.org/badge/doi/<<zenodo_doi>>.svg)](https://doi.org/<<zenodo_doi>>)
+[![bioRxiv badge](https://zenodo.org/badge/doi/<<biorxiv_doi>>.svg)](https://doi.org/<<biorxiv_doi>>) ⬅️ read the preprint here
+ -->
 
 {{ cookiecutter.project_description }}
 
