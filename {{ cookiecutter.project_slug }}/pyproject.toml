@@ -25,6 +25,7 @@ dependencies = [
     "tqdm>=4.64.0",
     "parmap>=1.5.3",
     "cloudpickle>=3.1.1",
+    "pyarrow>=19.0.0",
     "numpy>=1.22",
     "pandas>=1.4.3",
     "anndata>=0.8.0",
