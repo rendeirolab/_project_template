@@ -32,7 +32,7 @@ sync: _sync backup_time ## [dev] Sync data/code to SCU server
 
 interactive: ## [dev] Start an interactive IPython session
 	@echo "Starting an interaction IPython session"
-	{% if cookiecutter.management == "uv" -%} uv run {%- endif %} python -m IPython -i src/analysis.py
+	{% if cookiecutter.management == "uv" -%} uv run --extra dev {%- endif %} python -m IPython -i src/analysis.py
 
 
 analysis:  ## Run all analysis steps
