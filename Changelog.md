@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
   - Add choice of software manager from `uv` (default), `conda` or `pip`.
   - Add choice of editor `vscode`.
-  - Add `pyarrow`, `igraph`, and `leidenalg` as dependencies.
+  - Add `pyarrow`, `igraph`, `leidenalg`, and `fa2-modified` as dependencies.
 
 ### Changed
   - Add lower bound for all optional dependencies.
