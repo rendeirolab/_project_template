@@ -2,10 +2,11 @@
     "project_slug": null,
     "project_description": "Extended project description",
     "project_type": ["research", "software"],
-    "editor": "sublime-text",
+    "management": ["uv", "pip"],
+    "editor": ["sublime-text", "vscode"],
     "full_name": null,
     "username": null,
     "email": null,
-    "template_version": "0.4.1",
+    "template_version": "0.4.1dev",
     "create_github_repo": false
 }

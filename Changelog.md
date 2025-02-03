@@ -10,13 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 ### Added
-  - 
+  - Add choice of software manager from `uv` (default), `conda` or `pip`.
+  - Add choice of editor `vscode`.
 
 ### Changed
-  - 
+  - Add lower bound for all optional dependencies.
 
 ### Removed
-  - 
+  - Makefile targets for upload, processing and download of data.
+  - Removed PyQt5 dev dependency.
 
 
 ## [0.4.1] 2025-02-03

@@ -18,15 +18,7 @@ help:  ## Display help and quit
 		%s\n", $$1, $$2}'
 
 requirements:  ## Install Python requirements
-	pip install -r requirements.txt
-
-process:  ## [dev] Run first step of conversion of MCD to various files (should be done only when processing files from MCD files)
-	@echo "Running prepare step for samples: $(SAMPLES)"
-	for SAMPLE in $(SAMPLES); do \
-		do-something-with \
-			-i data/$${SAMPLE}/$${SAMPLE}.mcd
-			-o processed/$${SAMPLE}; \
-	done
+	{% if cookiecutter.management == "uv" -%} uv sync --extra dev {%- else -%} pip install -r requirements.txt{%- endif %}
 
 backup_time:
 	echo "Last backup: " `date` >> _backup_time
@@ -38,34 +30,18 @@ _sync:
 
 sync: _sync backup_time ## [dev] Sync data/code to SCU server
 
-
-upload_data: ## [dev] Upload processed files to Zenodo (TODO: upload image stacks, activation IMC)
-	@echo "Warning: this step is not meant to be run, but simply details how datasets were uploaded."
-	python -u src/_upload.py  # Used in the first data deposition
-	python -u src/_upload_update.py ## Update metadata and add further datasets on manuscript revision
-
-download_data: ## [TODO!] Download processed data from Zenodo (for reproducibility)
-	@echo "Not yet implemented!"
-	python -u src/_download_datasets.py
-
 interactive: ## [dev] Start an interactive IPython session
 	@echo "Starting an interaction IPython session"
-	python -m IPython -i src/analysis.py
+	{% if cookiecutter.management == "uv" -%} uv run {%- endif %} python -m IPython -i src/analysis.py
+
 
 analysis:  ## Run all analysis steps
 	@echo "Running analysis!"
-
-	# Analysis of first submission
-	# # Global look at the clinical metadata
-	# python -u src/clinical.py
-
 	# # Main analysis steps
-	python -u src/analysis.py
-	# python -u src/analysis1.py
-	# python -u src/analysis2.py
-
-	# Revision work:
-	# python -u src/further_analysis.py
+	{% if cookiecutter.management == "uv" -%} uv run {%- endif %} python -u src/analysis.py
+	# {% if cookiecutter.management == "uv" -%} uv run {%- endif %}python -u src/analysis1.py
+	# {% if cookiecutter.management == "uv" -%} uv run {%- endif %}python -u src/analysis2.py
+	# ...
 
 figures:  ## Produce figures in various formats
 	cd figures; bash process.sh
