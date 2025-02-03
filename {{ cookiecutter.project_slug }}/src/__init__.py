@@ -28,6 +28,6 @@ class FigKws(tp.TypedDict):
 
 class config:
     metadata_dir = Path("metadata")
-    data_dir = Path("data") / "gtex"
-    results_dir = Path("results") / "gtex"
+    data_dir = Path("data")
+    results_dir = Path("results")
     figkws: FigKws = dict(bbox_inches="tight", dpi=300)

@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
   - Add lower bound for all optional dependencies.
+  - Changed project __init__.config to remove reference to 'gtex'.
 
 ### Removed
   - Makefile targets for upload, processing and download of data.
