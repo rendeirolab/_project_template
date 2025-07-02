@@ -9,18 +9,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.5.0] 2025-07-02
+
 ### Added
+  - Adopt `uv` as the default manager.
+  - Adopt `taskipy` as the default task runner.
   - Add choice of software manager from `uv` (default), `conda` or `pip`.
   - Add choice of editor `vscode`.
   - Add `pyarrow`, `igraph`, `leidenalg`, `fa2-modified`, `fastcluster` and `pymde` as dependencies.
+  - Add script to upgrade the template with latest package versions for `uv`: `update_uv_requirements.sh`
 
 ### Changed
+  - Updated minimal Python version to 3.12.
+  - Updated package versions.
   - Add lower bound for all optional dependencies.
   - Changed project __init__.config to remove reference to 'gtex'.
+  - Remove various dependency groups in favor of a single `dev` group.
 
 ### Removed
+  - Removed specific fields in `build-system`.
   - Makefile targets for upload, processing and download of data.
   - Removed PyQt5 dev dependency.
+  - `pyproject.toml` sections on `pytest`.
 
 
 ## [0.4.1] 2025-02-03

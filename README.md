@@ -22,6 +22,7 @@ Fields to be provided are:
 - `username`:  The user's username (no whitespace).
 - `email`: The user's email.
 - [do not change] `template_version`: This will keep track of what template version was used to 
+- `create_github_repo`: Whether to create a github repository for the project (requires the `gh` command line tool to be installed and authenticated).
 
 ## Defaults
 To have default values filled in (e.g. username, email) create a `.cookiecutterrc` file or use a `COOKIECUTTER_CONFIG` environmental variable [as described here](https://cookiecutter.readthedocs.io/en/stable/advanced/user_config.html).
